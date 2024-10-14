@@ -1,0 +1,90 @@
+{
+  "name": "RegisterStationBO1",
+  "description": "RegisterStation Bordeaux n°1",
+  "configuration": {
+    "id": "SpeedwayR-12-2E-25",
+    "name": "SpeedwayR-12-2E-25",
+    "driver": "IMPINJ",
+    "implementation": "R420",
+    "configuration": {
+      "settings": {
+        "ipAddress": "192.168.2.2",
+        "session": 1,
+        "estimatedNumberOfTags": 10,
+        "report": {
+          "mode": "Individual",
+          "includeAntennaPortNumber": true,
+          "includeFirstSeenTime": true,
+          "includeLastSeenTime": true,
+          "includeSeenCount": true,
+          "includePeakRssi": true,
+          "includeFastId": true
+        },
+        "readerMode": "Hybrid",
+        "searchMode": "TagFocus",
+        "txFrequenciesInMhz": [
+          865.7,
+          866.3,
+          866.9,
+          867.5
+        ]
+      },
+      "reachables": {
+        "readers": [
+          {
+            "id": 1,
+            "antennas": [
+              {
+                "id": 1,
+                "txPowerInDbm": 30,
+                "rxSensitivityInDbm": -50
+              }
+            ]
+          }
+        ],
+        "inputs": [
+          {
+            "id": 1,
+            "debounceInMs": 50
+          },
+          {
+            "id": 2,
+            "debounceInMs": 50
+          },
+          {
+            "id": 3,
+            "debounceInMs": 50
+          },
+          {
+            "id": 4,
+            "debounceInMs": 50
+          }
+        ],
+        "outputs": [
+          {
+            "id": 1
+          },
+          {
+            "id": 2
+          },
+          {
+            "id": 3
+          },
+          {
+            "id": 4
+          }
+        ]
+      }
+    }
+  },
+  "workflow": {
+    "id": "870d2889-c728-4c77-994c-70e1366a7d8b",
+    "view": "{\"attrs\":{\"width\":1920,\"height\":600},\"className\":\"Stage\",\"children\":[{\"attrs\":{},\"className\":\"Layer\",\"children\":[]}]}",
+    "type": "flow:Definitions",
+    "process": {
+      "id": "b5be2ae7-804a-4f94-982f-688be5518a79",
+      "nodes": [],
+      "sequences": []
+    }
+  }
+}

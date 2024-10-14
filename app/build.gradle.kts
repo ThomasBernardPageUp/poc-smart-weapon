@@ -74,7 +74,7 @@ dependencies {
     implementation(files("libs/libltkjava-11.0.0.0.jar"))
     implementation(files("libs/mina-core-2.1.8.jar"))
     implementation(files("libs/slf4j-api-1.7.32.jar"))
-
+    implementation("com.google.code.gson:gson:2.11.0")
 
     implementation("org.apache.logging.log4j:log4j-1.2-api:2.24.1")
     implementation("org.apache.logging.log4j:log4j-core:2.24.1")
