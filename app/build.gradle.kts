@@ -73,7 +73,6 @@ dependencies {
     implementation(files("libs/OctaneSDKJava-4.0.0.0.jar"))
     implementation(files("libs/libltkjava-11.0.0.0.jar"))
     implementation(files("libs/mina-core-2.1.8.jar"))
-    implementation(files("libs/slf4j-api-1.7.32.jar"))
     implementation("com.google.code.gson:gson:2.11.0")
 
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
