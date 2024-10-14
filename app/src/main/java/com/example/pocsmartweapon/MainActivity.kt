@@ -1,6 +1,7 @@
 package com.example.pocsmartweapon
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -20,6 +21,7 @@ import com.example.pocsmartweapon.ui.theme.PocSmartWeaponTheme
 import com.impinj.octane.ImpinjReader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,14 +36,24 @@ class MainActivity : ComponentActivity() {
                     scope.launch(Dispatchers.IO) {
                         try {
                             val reader = ImpinjReader()
-                            reader.name = "SpeedwayR-12-2E-25"
-                            reader.connectTimeout = 60000
+//                            reader.name = "SpeedwayR-12-2E-25"
+//                            reader.connectTimeout = 60000
                             reader.connect("192.168.1.35")
 
+                            // Get scanned tags
+                            reader.queryTags()
+
+                            reader.setKeepaliveListener { impinjReader, keepaliveEvent ->
+                                println("Keepalive event received")
+                            }
 
 //                            reader.connect("192.168.1.35")
                         }
                         catch (e : Exception){
+                            // Show toast
+                            withContext(Dispatchers.Main){
+                                Toast.makeText(this@MainActivity, "Error connecting to reader", Toast.LENGTH_SHORT).show()
+                            }
                             e.printStackTrace()
                         }
                     }
@@ -49,7 +61,7 @@ class MainActivity : ComponentActivity() {
 
                 Surface(modifier = Modifier.fillMaxSize()) {
                     LaunchedEffect(Unit) {
-                        connect()
+//                        connect()
                     }
 
                     Button(onClick = { connect() }, modifier = Modifier.padding(16.dp)) {
