@@ -12,10 +12,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.pocsmartweapon.ui.theme.PocSmartWeaponTheme
 import com.impinj.octane.ImpinjReader
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,23 +27,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PocSmartWeaponTheme {
-                Surface(modifier = Modifier.fillMaxSize()) {
 
-                    LaunchedEffect(Unit) {
+                val scope = rememberCoroutineScope()
+
+                fun connect(){
+                    scope.launch(Dispatchers.IO) {
                         try {
                             val reader = ImpinjReader()
-
-                            reader.connect("192.168.1.35")
-                        }
-                        catch (e : Exception){
-                            e.printStackTrace()
-                        }
-                    }
-
-                    Button(onClick = {
-                        try {
-                            val reader = ImpinjReader()
-                            reader.disconnect()
+                            reader.name = "SpeedwayR-12-2E-25"
+                            reader.connectTimeout = 60000
                             reader.connect("192.168.1.35")
 
 
@@ -48,7 +44,15 @@ class MainActivity : ComponentActivity() {
                         catch (e : Exception){
                             e.printStackTrace()
                         }
-                    }) {
+                    }
+                }
+
+                Surface(modifier = Modifier.fillMaxSize()) {
+                    LaunchedEffect(Unit) {
+                        connect()
+                    }
+
+                    Button(onClick = { connect() }, modifier = Modifier.padding(16.dp)) {
                         Text("Connect to reader")
                     }
                 }
