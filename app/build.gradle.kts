@@ -76,6 +76,14 @@ dependencies {
     implementation(files("libs/slf4j-api-1.7.32.jar"))
     implementation("com.google.code.gson:gson:2.11.0")
 
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation("org.slf4j:slf4j-api:1.7.32")
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    implementation("org.slf4j:slf4j-simple:1.7.32")
+
+
+//    implementation("org.slf4j:slf4j-simple-1.6.1")
     implementation("org.apache.logging.log4j:log4j-1.2-api:2.24.1")
     implementation("org.apache.logging.log4j:log4j-core:2.24.1")
 
