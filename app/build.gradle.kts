@@ -76,7 +76,9 @@ dependencies {
     implementation(files("libs/slf4j-api-1.7.32.jar"))
 
 
-    implementation("org.apache.logging.log4j:log4j-1.2-api:2.17.1")
+    implementation("org.apache.logging.log4j:log4j-1.2-api:2.24.1")
     implementation("org.apache.logging.log4j:log4j-core:2.24.1")
+
+    implementation("org.jdom:jdom:1.1.3")
 }
 
